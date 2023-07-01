@@ -119,16 +119,6 @@ def sidebar_input_features():
 
     return df
 
-try: 
-        if st.button('Predict'):
-            prediction = load_model_and_predict(user_features_df)
-            if prediction>0:
-                st.balloons()
-                st.success('You can sell the car for {:.2f}'.format(prediction[0]))
-            else:
-                st.warning("You will be not able to sell this car !!")
-except:
-        st.warning("Opps!! Something went wrong\nTry again")
 
 
 if __name__ == "__main__":
