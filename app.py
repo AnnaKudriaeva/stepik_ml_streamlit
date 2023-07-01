@@ -5,6 +5,7 @@ from PIL import Image
 from model import open_data, split_data, load_model_and_predict
 
 carsData = pd.read_csv("data/cleaned_carsData.csv")
+
 def process_main_page():
     show_main_page()
     process_side_bar_inputs()
@@ -62,10 +63,7 @@ def process_side_bar_inputs():
 
 def sidebar_input_features():
     p1 = st.sidebar.selectbox("Бренд", options = carsData['brand'].unique())
-    p2 = st.sidebar.selectbox("Модель", (
-    carsData['model'].unique()))
-    p3 = st.sidebar.selectbox("Вариант", carsData.groupby('model')['variant'].apply(lambda x: list(np.unique(x))))
-
+    
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
 
@@ -74,42 +72,40 @@ def sidebar_input_features():
         min_value=0, max_value=1000000, step=25000)
 
     p6 = st.sidebar.slider("Количество мест",
-                                carsData['seats'].unique())
+                                options = carsData['seats'].unique())
     
     p7 = st.sidebar.slider("Количество владельцев",
-                                df['owner'].unique())
+                                options = df['owner'].unique())
     
     p8 = st.sidebar.slider("Короюка передач",
-                                carsData['transmission'].unique())
+                                options = carsData['transmission'].unique())
     
     p9 = st.sidebar.slider("Продавец",
-                                carsData['seller_type'].unique())
+                                options = carsData['seller_type'].unique())
     
     p10 = st.sidebar.slider("Тип топлива",
-                                carsData['fuel'].unique())
+                                options = carsData['fuel'].unique())
     
     p11 = st.sidebar.slider("Пробег",
-                                carsData['mileage'].unique())
+                                options = carsData['mileage'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
-                                carsData['engine'].unique())
+                                options = carsData['engine'].unique())
     
     p13 = st.sidebar.slider("Пиковая мощность двигателя",
-                                carsData['max_power'].unique())
+                                options = carsData['max_power'].unique())
     
     p13 = st.sidebar.slider("Количество мест",
-                                carsData['max_power'].unique())
+                                options = carsData['max_power'].unique())
     
     p14 = st.sidebar.slider("Крутящий момент",
-                                carsData['torque_nm'].unique())
+                                options = carsData['torque_nm'].unique())
     
     p15 = st.sidebar.slider("Крутящий момент, максимальный",
-                                carsData['torque_max_rpm'].unique())
+                                options = carsData['torque_max_rpm'].unique())
 
     data = {
         "brand": p1,
-        "model": p2,
-        "variant": p3,
         "year": p4,
         "km_driven": p5,
         "seats": p6,
