@@ -86,23 +86,17 @@ def sidebar_input_features():
     p10 = st.sidebar.selectbox("Тип топлива",
                                 options = carsData['fuel'].unique())
     
-    p11 = st.sidebar.selectbox("Пробег",
-                                options = carsData['mileage'].unique())
+    p12 = st.sidebar.slider("Рабочий объем двигателя",
+                                min_value=600, max_value=3000, step=200)
     
-    p12 = st.sidebar.selectbox("Рабочий объем двигателя",
-                                options = carsData['engine'].unique())
+    p13 = st.sidebar.slider("Пиковая мощность двигателя",
+                                min_value=30, max_value=300, step=30)
     
-    p13 = st.sidebar.selectbox("Пиковая мощность двигателя",
-                                options = carsData['max_power'].unique())
+    p14 = st.sidebar.slider("Крутящий момент",
+                                min_value=30, max_value=1500, step=50)
     
-    p13 = st.sidebar.selectbox("Количество мест",
-                                options = carsData['max_power'].unique())
-    
-    p14 = st.sidebar.selectbox("Крутящий момент",
-                                options = carsData['torque_nm'].unique())
-    
-    p15 = st.sidebar.selectbox("Крутящий момент, максимальный",
-                                options = carsData['torque_max_rpm'].unique())
+    p15 = st.sidebar.slider("Крутящий момент, максимальный",
+                                min_value=500, max_value=5000, step=500)
 
     data = {
         "brand": p1,
@@ -113,7 +107,6 @@ def sidebar_input_features():
         "transmission": p8,
         "seller_type": p9,
         "fuel": p10,
-        'mileage': p11,
         'engine': p12,
         'max_power': p13,
         'torque_nm': p14,
