@@ -13,7 +13,6 @@ def show_main_page():
     st.set_page_config(
         layout="wide",
         initial_sidebar_state="auto",
-        page_title="Car Price Prediction",
         page_icon=image,
 
     )
@@ -60,13 +59,10 @@ def process_side_bar_inputs():
 
 def sidebar_input_features():
     p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
-    p2 = st.sidebar.selectbox("Модель", (
-    df['model'].unique()))
-    p3 = st.sidebar.selectbox("Вариант", df['variant'].unique())
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
-
+    
     p5 = st.sidebar.slider(
         "Пробег на дату продажи",
         min_value=0, max_value=1000000, step=25000)
@@ -83,31 +79,23 @@ def sidebar_input_features():
     p9 = st.sidebar.slider("Продавец",
                                 df['seller_type'].unique())
     
-    p10 = st.sidebar.slider("Тип топлива",
-                                df['fuel'].unique())
-    
-    p11 = st.sidebar.slider("Пробег",
-                                df['mileage'].unique())
+    p10 = st.sidebar.selectbox("Тип топлива",
+                                options = carsData['fuel'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
-                                df['engine'].unique())
+                                min_value=600, max_value=3000, step=200)
     
     p13 = st.sidebar.slider("Пиковая мощность двигателя",
-                                df['max_power'].unique())
-    
-    p13 = st.sidebar.slider("Количество мест",
-                                df['max_power'].unique())
+                                min_value=30, max_value=300, step=30)
     
     p14 = st.sidebar.slider("Крутящий момент",
-                                df['torque_nm'].unique())
+                                min_value=30, max_value=1500, step=50)
     
     p15 = st.sidebar.slider("Крутящий момент, максимальный",
-                                df['torque_max_rpm'].unique())
+                                min_value=500, max_value=5000, step=500)
 
     data = {
         "brand": p1,
-        "model": p2,
-        "variant": p3,
         "year": p4,
         "km_driven": p5,
         "seats": p6,
@@ -115,7 +103,6 @@ def sidebar_input_features():
         "transmission": p8,
         "seller_type": p9,
         "fuel": p10,
-        'mileage': p11,
         'engine': p12,
         'max_power': p13,
         'torque_nm': p14,
