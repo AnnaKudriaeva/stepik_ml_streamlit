@@ -70,8 +70,8 @@ def sidebar_input_features():
     p5 = st.sidebar.slider("Пробег на дату продажи", min_value=0, 
                             max_value=1000000, step=25000)
 
-    p6 = st.sidebar.selectbox("Количество мест",
-                                df['seats'].unique())
+    p6 = st.sidebar.slider("Количество мест",
+                            min_value=4, max_value=10, step=1)
     
     p7 = st.sidebar.selectbox("Количество владельцев",
                                 df['owner'].unique())

@@ -28,8 +28,8 @@ def preprocess_data(df: pd.DataFrame, test=True):
     else:
         features_df = df
 
-    categorial_RF = ['fuel', 'seller_type', 'transmission', 'owner', 'brand', 'model', 'variant', 'seats']
-    numeric = ['year', 'km_driven', 'mileage', 'engine', 'max_power', 'torque_nm', 'torque_max_rpm']
+    categorial_RF = ['fuel', 'seller_type', 'transmission', 'owner', 'brand', 'model', 'variant']
+    numeric = ['year', 'km_driven', 'mileage', 'engine', 'max_power', 'torque_nm', 'torque_max_rpm', 'seats']
     scaler = StandardScaler()
     scaler.fit(df[numeric])
     features_df[numeric] = scaler.transform(df[numeric])
