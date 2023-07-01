@@ -57,8 +57,8 @@ def process_side_bar_inputs():
     user_features_df = preprocessed_features_df[:1]
     write_user_data(user_features_df)
 
-    prediction, prediction_probas = load_model_and_predict(user_features_df)
-    write_prediction(prediction, prediction_probas)
+    prediction = load_model_and_predict(user_features_df)
+    write_prediction(prediction)
 
 
 def sidebar_input_features():
@@ -118,6 +118,17 @@ def sidebar_input_features():
     df = pd.DataFrame(data, index=[0])
 
     return df
+
+try: 
+        if st.button('Predict'):
+            prediction = load_model_and_predict(user_features_df)
+            if prediction>0:
+                st.balloons()
+                st.success('You can sell the car for {:.2f}'.format(prediction[0]))
+            else:
+                st.warning("You will be not able to sell this car !!")
+except:
+        st.warning("Opps!! Something went wrong\nTry again")
 
 
 if __name__ == "__main__":
