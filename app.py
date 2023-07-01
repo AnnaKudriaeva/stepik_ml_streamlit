@@ -60,7 +60,7 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
+    p1 = st.sidebar.selectbox("Бренд", option = df['brand'].unique())
     p2 = st.sidebar.selectbox("Модель", (
     df['model'].unique()))
     p3 = st.sidebar.selectbox("Вариант", df['variant'].unique())
