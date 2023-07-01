@@ -11,7 +11,6 @@ RANDOM_STATE = 12345
 
 def open_data(path="/data/car_prediction_train.csv"):
     df = pd.read_csv(path)
-    df = df
 
     return df 
 
