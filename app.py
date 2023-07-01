@@ -29,15 +29,15 @@ def show_main_page():
     st.image(image)
 
 
-def write_user_data(df):
+def write_user_data(cars):
     st.write("### Ваши данные")
-    st.write(df)
+    st.write(cars)
 
 
-def write_prediction(prediction, prediction_proba):
+def write_prediction(prediction):
     st.write("### Предсказание")
     st.write('## Вы можете продать машину за {:.2f} рублей'.format(prediction))
-    st.write(prediction_proba)
+
 
 def process_side_bar_inputs():
     st.sidebar.header('Параметры')

@@ -74,8 +74,7 @@ def load_model_and_predict(df, path="data/finalized_model.mw"):
     prediction = model.predict(df)[0]
     # prediction = np.squeeze(prediction)
     
-    prediction_proba = round(mean_squared_error(target, prediction)**0.5, 3)
-    return prediction, prediction_proba
+    return prediction
 
 if __name__ == "__main__":
     df = open_data()
