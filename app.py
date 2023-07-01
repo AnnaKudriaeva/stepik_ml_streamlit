@@ -31,13 +31,13 @@ def show_main_page():
 
 
 def write_user_data(df):
-    st.write("## Ваши данные")
-    st.write(df)
+    st.write("### Ваши данные")
+    st.write(data)
 
 
 def write_prediction(prediction):
     st.write("### Предсказание")
-    st.write('## You can sell the car for {:.2f}'.format(prediction))
+    st.write('## You can sell the car for {:.2f} rubles'.format(prediction))
 
 def process_side_bar_inputs():
     st.sidebar.header('Заданные пользователем параметры')
