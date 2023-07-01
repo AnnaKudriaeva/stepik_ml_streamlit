@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
 from PIL import Image
 from model import open_data, split_data, load_model_and_predict
 
@@ -63,7 +64,7 @@ def sidebar_input_features():
     p1 = st.sidebar.selectbox("Бренд", options = carsData['brand'].unique())
     p2 = st.sidebar.selectbox("Модель", (
     carsData['model'].unique()))
-    p3 = st.sidebar.selectbox("Вариант", carsData['variant'].unique())
+    p3 = st.sidebar.selectbox("Вариант", df.groupby('model')['variant'].apply(lambda x: list(np.unique(x))))
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
