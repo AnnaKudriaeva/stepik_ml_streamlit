@@ -3,6 +3,8 @@ import streamlit as st
 from PIL import Image
 from model import open_data, split_data, load_model_and_predict
 
+carsdata = pd.read_csv("data/cleaned_carsData.csv")
+
 def process_main_page():
     show_main_page()
     process_side_bar_inputs()
@@ -58,7 +60,7 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
+    p1 = st.sidebar.selectbox("Бренд", carsdata['brand'].unique())
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
@@ -68,16 +70,16 @@ def sidebar_input_features():
         min_value=0, max_value=1000000, step=25000)
 
     p6 = st.sidebar.slider("Количество мест",
-                                df['seats'].unique())
+                                carsdata['seats'].unique())
     
-    p7 = st.sidebar.slider("Количество владельцев",
-                                df['owner'].unique())
+    p7 = st.sidebar.selectbox("Количество владельцев",
+                                carsdata['owner'].unique())
     
-    p8 = st.sidebar.slider("Короюка передач",
-                                df['transmission'].unique())
+    p8 = st.sidebar.selectbox("Короюка передач",
+                                carsdata['transmission'].unique())
     
-    p9 = st.sidebar.slider("Продавец",
-                                df['seller_type'].unique())
+    p9 = st.sidebar.selectbox("Продавец",
+                                carsdata['seller_type'].unique())
     
     p10 = st.sidebar.selectbox("Тип топлива",
                                 options = carsData['fuel'].unique())
