@@ -34,11 +34,9 @@ def write_user_data(cars):
     st.write(cars)
 
 
-def write_prediction(prediction, prediction_probas):
+def write_prediction(prediction):
     st.write("### Предсказание")
     st.write('## Вы можете продать машину за {:.2f} рублей'.format(prediction))
-    st.write("## Вероятность предсказания")
-    st.write(prediction_probas)
 
 def process_side_bar_inputs():
     st.sidebar.header('Параметры')
