@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 from PIL import Image
-from model import open_data, split_data, load_model_and_predict
+from model import open_data, preprocess_data, split_data, load_model_and_predict
 
 carsdata = pd.read_csv("data/cleaned_carsData.csv")
 
@@ -48,14 +48,16 @@ def process_side_bar_inputs():
     user_input_df = sidebar_input_features()
 
     train_df = open_data()
-    train_X_df, _ = split_data(train_df)
-    full_X_df = pd.concat((user_input_df, train_X_df), axis=0)
+    train_features_df, _ = split_data(train_df)
+    full_features_df = pd.concat((user_input_df, train_features_df), axis=0)
     
 
-    
-    write_user_data(user_X_df)
+    preprocessed_features_df = preprocess_data(full_features_df, test=False)
 
-    prediction, prediction_probas = load_model_and_predict(user_X_df)
+    user_features_df = preprocessed_features_df[:1]
+    write_user_data(user_features_df)
+
+    prediction, prediction_probas = load_model_and_predict(user_features_df)
     write_prediction(prediction, prediction_probas)
 
 
