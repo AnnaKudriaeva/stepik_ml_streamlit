@@ -21,8 +21,8 @@ def show_main_page():
 
     st.write(
         """
-        ## Собираетесь продавать машину?
-        Узнайте на цену своей машины!
+        # Собираетесь продавать машину?
+        Узнайте цену своей машины!
         """
     )
 
@@ -34,9 +34,10 @@ def write_user_data(df):
     st.write(df)
 
 
-def write_prediction(prediction):
+def write_prediction(prediction, prediction_proba):
     st.write("### Предсказание")
     st.write('## Вы можете продать машину за {:.2f} рублей'.format(prediction))
+    st.write(prediction_proba)
 
 def process_side_bar_inputs():
     st.sidebar.header('Параметры')
@@ -71,7 +72,7 @@ def sidebar_input_features():
     p7 = st.sidebar.selectbox("Количество владельцев",
                                 cars['owner'].unique())
     
-    p8 = st.sidebar.selectbox("Короюка передач",
+    p8 = st.sidebar.selectbox("Коробка передач",
                                 cars['transmission'].unique())
     
     p9 = st.sidebar.selectbox("Продавец",
