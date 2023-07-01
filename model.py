@@ -14,7 +14,7 @@ def split_data(df: pd.DataFrame):
 
     return features, target
 
-def open_data(path="/data/car_prediction_train.csv"):
+def open_data(path="data/cleaned_carsData.csv"):
     df = pd.read_csv(path)
 
     return df
