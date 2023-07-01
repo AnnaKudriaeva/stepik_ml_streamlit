@@ -36,7 +36,7 @@ def write_user_data(df):
 
 
 def write_prediction(prediction):
-    st.write("## Предсказание")
+    st.write("### Предсказание")
     st.write('## You can sell the car for {:.2f}'.format(prediction))
 
 def process_side_bar_inputs():
