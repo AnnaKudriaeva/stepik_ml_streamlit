@@ -65,11 +65,10 @@ def sidebar_input_features():
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
     
-    p5 = st.sidebar.slider(
-        "Пробег на дату продажи",
-        min_value=0, max_value=1000000, step=25000)
+    p5 = st.sidebar.slider("Пробег на дату продажи", min_value=0, 
+                            max_value=1000000, step=25000)
 
-    p6 = st.sidebar.slider("Количество мест",
+    p6 = st.sidebar.selectbox("Количество мест",
                                 carsdata['seats'].unique())
     
     p7 = st.sidebar.selectbox("Количество владельцев",
@@ -82,7 +81,7 @@ def sidebar_input_features():
                                 carsdata['seller_type'].unique())
     
     p10 = st.sidebar.selectbox("Тип топлива",
-                                options = carsData['fuel'].unique())
+                                options = carsdata['fuel'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
                                 min_value=600, max_value=3000, step=200)
