@@ -8,17 +8,16 @@ from pickle import dump, load
 
 RANDOM_STATE = 12345
 
-
-def open_data(path="/data/car_prediction_train.csv"):
-    df = pd.read_csv(path)
-
-    return df 
-
 def split_data(df: pd.DataFrame):
     target = df['selling_price']
     features = df.drop(['selling_price'], axis=1)
 
     return features, target
+
+def open_data(path="/data/car_prediction_train.csv"):
+    df = pd.read_csv(path)
+
+    return df
 
 def fit_and_save_model(features, target, path="/data/finalized_model.mw"):
     model = CatBoostRegressor()
