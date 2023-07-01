@@ -21,26 +21,25 @@ def show_main_page():
 
     st.write(
         """
-        # Car Price Prediction
-        ## Are you planning to sell your car !?
-        So let's try evaluating the price..
+        ## Собираетесь продавать машину?
+        Узнайте на цену своей машины!
         """
     )
 
     st.image(image)
 
 
-def write_user_data(data):
+def write_user_data(df):
     st.write("### Ваши данные")
-    st.write(data)
+    st.write(df)
 
 
 def write_prediction(prediction):
     st.write("### Предсказание")
-    st.write('## You can sell the car for {:.2f} rubles'.format(prediction))
+    st.write('## Вы можете продать машину за {:.2f} рублей'.format(prediction))
 
 def process_side_bar_inputs():
-    st.sidebar.header('Заданные пользователем параметры')
+    st.sidebar.header('Параметры')
     user_input_df = sidebar_input_features()
 
     train_df = open_data()
