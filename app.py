@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 from model import open_data, split_data, load_model_and_predict
 
-
+carsData = pd.read_csv("data/cleaned_carsData.csv")
 def process_main_page():
     show_main_page()
     process_side_bar_inputs()
