@@ -71,13 +71,13 @@ def sidebar_input_features():
         "Пробег на дату продажи",
         min_value=0, max_value=1000000, step=25000)
 
-    p6 = st.sidebar.slider("Количество мест",
+    p6 = st.sidebar.selectbox("Количество мест",
                                 options = carsData['seats'].unique())
     
-    p7 = st.sidebar.slider("Количество владельцев",
+    p7 = st.sidebar.selectbox("Количество владельцев",
                                 options = df['owner'].unique())
     
-    p8 = st.sidebar.slider("Короюка передач",
+    p8 = st.sidebar.selectbox("Короюка передач",
                                 options = carsData['transmission'].unique())
     
     p9 = st.sidebar.slider("Продавец",
