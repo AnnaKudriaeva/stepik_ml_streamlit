@@ -30,7 +30,7 @@ def show_main_page():
     st.image(image)
 
 
-def write_user_data(df):
+def write_user_data(data):
     st.write("### Ваши данные")
     st.write(data)
 
