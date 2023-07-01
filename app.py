@@ -62,7 +62,7 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", carsdata['brand'].unique())
+    p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
