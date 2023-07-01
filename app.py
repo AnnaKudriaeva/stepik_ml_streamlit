@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 from model import open_data, preprocess_data, split_data, load_model_and_predict
 
-carsdata = pd.read_csv("data/cleaned_carsData.csv")
+df = pd.read_csv("data/cleaned_carsData.csv")
 
 def process_main_page():
     show_main_page()
@@ -71,19 +71,19 @@ def sidebar_input_features():
                             max_value=1000000, step=25000)
 
     p6 = st.sidebar.selectbox("Количество мест",
-                                carsdata['seats'].unique())
+                                df['seats'].unique())
     
     p7 = st.sidebar.selectbox("Количество владельцев",
-                                carsdata['owner'].unique())
+                                df['owner'].unique())
     
     p8 = st.sidebar.selectbox("Короюка передач",
-                                carsdata['transmission'].unique())
+                                df['transmission'].unique())
     
     p9 = st.sidebar.selectbox("Продавец",
-                                carsdata['seller_type'].unique())
+                                df['seller_type'].unique())
     
     p10 = st.sidebar.selectbox("Тип топлива",
-                                options = carsdata['fuel'].unique())
+                                options = df['fuel'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
                                 min_value=600, max_value=3000, step=200)
