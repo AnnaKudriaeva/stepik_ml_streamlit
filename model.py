@@ -3,6 +3,7 @@ import pickle
 
 from sklearn.metrics import mean_squared_error, make_scorer, accuracy_score
 from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 from catboost import CatBoostRegressor
 from pickle import dump, load
 
@@ -14,10 +15,40 @@ def split_data(df: pd.DataFrame):
 
     return features, target
 
-def open_data(path="data/car_prediction_train.csv"):
+def open_data(path="data/cleaned_carsdata.csv"):
     df = pd.read_csv(path)
 
     return df
+
+def preprocess_data(df: pd.DataFrame, test=True):
+    df.dropna(inplace=True)
+
+    if test:
+        features_df, target_df = split_data(df)
+    else:
+        features_df = df
+
+    categorial_RF = features.select_dtypes(include='object').columns.to_list()
+    numeric = features.select_dtypes(exclude='object').columns.to_list()
+    scaler = StandardScaler()
+    scaler.fit(df[numeric])
+    features[numeric] = scaler.transform(df[numeric])
+    pd.options.mode.chained_assignment = None
+
+    encoder_ohe = OneHotEncoder(drop="first", handle_unknown="ignore")
+    encoder_ohe.fit(features[categorial_RF])
+
+    tmp = pd.DataFrame(encoder_ohe.transform(features[categorial_RF]).toarray(),
+                            columns=encoder_ohe.get_feature_names_out(),
+                            index=features.index)
+    
+    features.drop(categorial_RF, axis=1, inplace=True)
+    features = features.join(tmp)
+
+    if test:
+        return features_df, target_df
+    else:
+        return features_df
 
 def fit_and_save_model(features, target, path="/data/finalized_model.mw"):
     model = CatBoostRegressor()
