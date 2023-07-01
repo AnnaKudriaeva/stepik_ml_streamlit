@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 from model import open_data, preprocess_data, split_data, load_model_and_predict
 
-df = pd.read_csv("data/cleaned_carsData.csv")
+cars = pd.read_csv("data/cleaned_carsData.csv")
 
 def process_main_page():
     show_main_page()
@@ -62,7 +62,7 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
+    p1 = st.sidebar.selectbox("Бренд", cars['brand'].unique())
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
@@ -74,16 +74,16 @@ def sidebar_input_features():
                             min_value=4, max_value=10, step=1)
     
     p7 = st.sidebar.selectbox("Количество владельцев",
-                                df['owner'].unique())
+                                cars['owner'].unique())
     
     p8 = st.sidebar.selectbox("Короюка передач",
-                                df['transmission'].unique())
+                                cars['transmission'].unique())
     
     p9 = st.sidebar.selectbox("Продавец",
-                                df['seller_type'].unique())
+                                cars['seller_type'].unique())
     
     p10 = st.sidebar.selectbox("Тип топлива",
-                                options = df['fuel'].unique())
+                                cars['fuel'].unique())
     
     p11 = st.sidebar.slider("Пробег",
                                 min_value=0, max_value=55, step=5)
@@ -115,7 +115,9 @@ def sidebar_input_features():
         'torque_nm': p14,
         'torque_max_rpm': p15
     }
+   df = pd.DataFrame(data, index=[0])
 
+    return df
 
 
 if __name__ == "__main__":
