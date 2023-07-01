@@ -50,7 +50,7 @@ def preprocess_data(df: pd.DataFrame, test=True):
     else:
         return features_df
 
-def fit_and_save_model(features, target, path="/data/finalized_model.mw"):
+def fit_and_save_model(features, target, path="data/finalized_model.mw"):
     model = CatBoostRegressor()
 
     model.fit(features, target)
@@ -63,7 +63,7 @@ def fit_and_save_model(features, target, path="/data/finalized_model.mw"):
 
     print(f"Model was saved to {path}")
 
-def load_model_and_predict(df, path="/data/finalized_model.mw"):
+def load_model_and_predict(df, path="data/finalized_model.mw"):
     with open(path, "rb") as file:
         model = load(file)
 
