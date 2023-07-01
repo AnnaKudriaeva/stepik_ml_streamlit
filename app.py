@@ -1,15 +1,11 @@
 import pandas as pd
 import streamlit as st
-import numpy as np
 from PIL import Image
 from model import open_data, split_data, load_model_and_predict
-
-carsData = pd.read_csv("data/cleaned_carsData.csv")
 
 def process_main_page():
     show_main_page()
     process_side_bar_inputs()
-
 
 def show_main_page():
     image = Image.open('data/car.jpeg')
@@ -24,7 +20,8 @@ def show_main_page():
 
     st.write(
         """
-        # Are you planning to sell your car !?
+        # Car Price Prediction
+        ## Are you planning to sell your car !?
         So let's try evaluating the price..
         """
     )
@@ -62,8 +59,11 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", options = carsData['brand'].unique())
-    
+    p1 = st.sidebar.selectbox("Бренд", df['brand'].unique())
+    p2 = st.sidebar.selectbox("Модель", (
+    df['model'].unique()))
+    p3 = st.sidebar.selectbox("Вариант", df['variant'].unique())
+
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
 
@@ -71,35 +71,43 @@ def sidebar_input_features():
         "Пробег на дату продажи",
         min_value=0, max_value=1000000, step=25000)
 
-    p6 = st.sidebar.selectbox("Количество мест",
-                                options = carsData['seats'].unique())
+    p6 = st.sidebar.slider("Количество мест",
+                                df['seats'].unique())
     
-    p7 = st.sidebar.selectbox("Количество владельцев",
-                                options = carsData['owner'].unique())
+    p7 = st.sidebar.slider("Количество владельцев",
+                                df['owner'].unique())
     
-    p8 = st.sidebar.selectbox("Короюка передач",
-                                options = carsData['transmission'].unique())
+    p8 = st.sidebar.slider("Короюка передач",
+                                df['transmission'].unique())
     
-    p9 = st.sidebar.selectbox("Продавец",
-                                options = carsData['seller_type'].unique())
+    p9 = st.sidebar.slider("Продавец",
+                                df['seller_type'].unique())
     
-    p10 = st.sidebar.selectbox("Тип топлива",
-                                options = carsData['fuel'].unique())
+    p10 = st.sidebar.slider("Тип топлива",
+                                df['fuel'].unique())
+    
+    p11 = st.sidebar.slider("Пробег",
+                                df['mileage'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
-                                min_value=600, max_value=3000, step=200)
+                                df['engine'].unique())
     
     p13 = st.sidebar.slider("Пиковая мощность двигателя",
-                                min_value=30, max_value=300, step=30)
+                                df['max_power'].unique())
+    
+    p13 = st.sidebar.slider("Количество мест",
+                                df['max_power'].unique())
     
     p14 = st.sidebar.slider("Крутящий момент",
-                                min_value=30, max_value=1500, step=50)
+                                df['torque_nm'].unique())
     
     p15 = st.sidebar.slider("Крутящий момент, максимальный",
-                                min_value=500, max_value=5000, step=500)
+                                df['torque_max_rpm'].unique())
 
     data = {
         "brand": p1,
+        "model": p2,
+        "variant": p3,
         "year": p4,
         "km_driven": p5,
         "seats": p6,
@@ -107,6 +115,7 @@ def sidebar_input_features():
         "transmission": p8,
         "seller_type": p9,
         "fuel": p10,
+        'mileage': p11,
         'engine': p12,
         'max_power': p13,
         'torque_nm': p14,
