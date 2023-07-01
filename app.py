@@ -75,33 +75,33 @@ def sidebar_input_features():
                                 options = carsData['seats'].unique())
     
     p7 = st.sidebar.selectbox("Количество владельцев",
-                                options = df['owner'].unique())
+                                options = carsData['owner'].unique())
     
     p8 = st.sidebar.selectbox("Короюка передач",
                                 options = carsData['transmission'].unique())
     
-    p9 = st.sidebar.slider("Продавец",
+    p9 = st.sidebar.selectbox("Продавец",
                                 options = carsData['seller_type'].unique())
     
-    p10 = st.sidebar.slider("Тип топлива",
+    p10 = st.sidebar.selectbox("Тип топлива",
                                 options = carsData['fuel'].unique())
     
-    p11 = st.sidebar.slider("Пробег",
+    p11 = st.sidebar.selectbox("Пробег",
                                 options = carsData['mileage'].unique())
     
-    p12 = st.sidebar.slider("Рабочий объем двигателя",
+    p12 = st.sidebar.selectbox("Рабочий объем двигателя",
                                 options = carsData['engine'].unique())
     
-    p13 = st.sidebar.slider("Пиковая мощность двигателя",
+    p13 = st.sidebar.selectbox("Пиковая мощность двигателя",
                                 options = carsData['max_power'].unique())
     
-    p13 = st.sidebar.slider("Количество мест",
+    p13 = st.sidebar.selectbox("Количество мест",
                                 options = carsData['max_power'].unique())
     
-    p14 = st.sidebar.slider("Крутящий момент",
+    p14 = st.sidebar.selectbox("Крутящий момент",
                                 options = carsData['torque_nm'].unique())
     
-    p15 = st.sidebar.slider("Крутящий момент, максимальный",
+    p15 = st.sidebar.selectbox("Крутящий момент, максимальный",
                                 options = carsData['torque_max_rpm'].unique())
 
     data = {
