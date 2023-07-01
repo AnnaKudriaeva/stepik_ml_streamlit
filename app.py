@@ -116,9 +116,6 @@ def sidebar_input_features():
         'torque_max_rpm': p15
     }
 
-    df = pd.DataFrame(data, index=[0])
-
-    return df
 
 
 if __name__ == "__main__":
