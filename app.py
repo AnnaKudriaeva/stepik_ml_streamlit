@@ -60,10 +60,10 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    p1 = st.sidebar.selectbox("Бренд", option = df['brand'].unique())
+    p1 = st.sidebar.selectbox("Бренд", option = carsData['brand'].unique())
     p2 = st.sidebar.selectbox("Модель", (
     df['model'].unique()))
-    p3 = st.sidebar.selectbox("Вариант", df['variant'].unique())
+    p3 = st.sidebar.selectbox("Вариант", carsData['variant'].unique())
 
     p4 = st.sidebar.slider("Год производства", min_value=1990, max_value=2020,
                             step=1)
@@ -73,37 +73,37 @@ def sidebar_input_features():
         min_value=0, max_value=1000000, step=25000)
 
     p6 = st.sidebar.slider("Количество мест",
-                                df['seats'].unique())
+                                carsData['seats'].unique())
     
     p7 = st.sidebar.slider("Количество владельцев",
                                 df['owner'].unique())
     
     p8 = st.sidebar.slider("Короюка передач",
-                                df['transmission'].unique())
+                                carsData['transmission'].unique())
     
     p9 = st.sidebar.slider("Продавец",
-                                df['seller_type'].unique())
+                                carsData['seller_type'].unique())
     
     p10 = st.sidebar.slider("Тип топлива",
-                                df['fuel'].unique())
+                                carsData['fuel'].unique())
     
     p11 = st.sidebar.slider("Пробег",
-                                df['mileage'].unique())
+                                carsData['mileage'].unique())
     
     p12 = st.sidebar.slider("Рабочий объем двигателя",
-                                df['engine'].unique())
+                                carsData['engine'].unique())
     
     p13 = st.sidebar.slider("Пиковая мощность двигателя",
-                                df['max_power'].unique())
+                                carsData['max_power'].unique())
     
     p13 = st.sidebar.slider("Количество мест",
-                                df['max_power'].unique())
+                                carsData['max_power'].unique())
     
     p14 = st.sidebar.slider("Крутящий момент",
-                                df['torque_nm'].unique())
+                                carsData['torque_nm'].unique())
     
     p15 = st.sidebar.slider("Крутящий момент, максимальный",
-                                df['torque_max_rpm'].unique())
+                                carsData['torque_max_rpm'].unique())
 
     data = {
         "brand": p1,
