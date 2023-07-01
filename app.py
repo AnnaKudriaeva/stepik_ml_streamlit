@@ -85,6 +85,9 @@ def sidebar_input_features():
     p10 = st.sidebar.selectbox("Тип топлива",
                                 options = df['fuel'].unique())
     
+    p11 = st.sidebar.slider("Пробег",
+                                min_value=0, max_value=55, step=5)
+    
     p12 = st.sidebar.slider("Рабочий объем двигателя",
                                 min_value=600, max_value=3000, step=200)
     
@@ -106,6 +109,7 @@ def sidebar_input_features():
         "transmission": p8,
         "seller_type": p9,
         "fuel": p10,
+        'mileage': p11,
         'engine': p12,
         'max_power': p13,
         'torque_nm': p14,
