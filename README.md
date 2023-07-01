@@ -35,3 +35,6 @@
 
 ## Используемые библиотеки
 *Pandas, Scikit-learn, Catboost, LightGBM*
+
+## Ссылка на веб-приложение:
+https://carstepikmlapp.streamlit.app/
