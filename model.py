@@ -54,12 +54,14 @@ def preprocess_data(df: pd.DataFrame, test=True):
     else:
         return features_df
 
-def fit_and_save_model(features, target, path="data/finalized_model.mw"):
+def fit_and_save_model(features_df, target_df, path="data/finalized_model.mw"):
     model = CatBoostRegressor()
 
-    model.fit(features, target)
-    predicted_test = model.predict(features)
-    rmse = round(mean_squared_error(target, predicted_test)**0.5, 3)
+    model.fit(features_df, target_df)
+    predicted_test = model.predict(features_df)
+    rmse = round(mean_squared_error(target_df, predicted_test)**0.5, 3)
+    accuracy = accuracy_score(predicted_test, target_df)
+    print(f"Model accuracy is {accuracy}")
     print(f"Model rmse is {rmse}")
 
     with open(path, "wb") as file:
