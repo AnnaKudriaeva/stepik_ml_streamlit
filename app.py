@@ -115,7 +115,7 @@ def sidebar_input_features():
         'torque_nm': p14,
         'torque_max_rpm': p15
     }
-   df = pd.DataFrame(data, index=[0])
+    df = pd.DataFrame(data, index=[0])
 
     return df
 

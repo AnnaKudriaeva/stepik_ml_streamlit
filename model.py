@@ -17,6 +17,10 @@ def split_data(df: pd.DataFrame):
 
 def open_data(path="data/cleaned_carsData.csv"):
     df = pd.read_csv(path)
+    df = df[['selling_price', 'brand', "year", "km_driven",
+        "seats", "owner", "transmission", "seller_type",
+        "fuel", 'mileage', 'engine', 'max_power',
+        'torque_nm','torque_max_rpm']]
 
     return df
 
