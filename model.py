@@ -73,7 +73,7 @@ def load_model_and_predict(df, path="data/finalized_model.mw"):
 
     prediction = model.predict(df)[0]
     # prediction = np.squeeze(prediction)
-
+    
     return prediction
 
 if __name__ == "__main__":
