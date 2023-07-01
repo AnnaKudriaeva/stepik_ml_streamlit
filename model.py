@@ -38,9 +38,9 @@ def preprocess_data(df: pd.DataFrame, test=True):
     encoder_ohe = OneHotEncoder(drop="first", handle_unknown="ignore")
     encoder_ohe.fit(features_df[categorial_RF])
 
-    tmp = pd.DataFrame(encoder_ohe.transform(features[categorial_RF]).toarray(),
+    tmp = pd.DataFrame(encoder_ohe.transform(features_df[categorial_RF]).toarray(),
                             columns=encoder_ohe.get_feature_names_out(),
-                            index=features.index)
+                            index=features_df.index)
     
     features_df.drop(categorial_RF, axis=1, inplace=True)
     features_df = features_df.join(tmp)
